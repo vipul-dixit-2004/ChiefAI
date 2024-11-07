@@ -1,5 +1,5 @@
-const list = {
-  ingredients: [
+export const ingredients = {
+  veg: [
     {
       name: "Oats",
       category: "veg",
@@ -141,36 +141,6 @@ const list = {
       },
     },
     {
-      name: "Eggs",
-      category: "non-veg",
-      macros: {
-        fiber: "low",
-        protein: "high",
-        carbohydrates: "low",
-        "good fats": "medium",
-      },
-    },
-    {
-      name: "Chicken Breast",
-      category: "non-veg",
-      macros: {
-        fiber: "low",
-        protein: "very high",
-        carbohydrates: "low",
-        "good fats": "low",
-      },
-    },
-    {
-      name: "Salmon",
-      category: "non-veg",
-      macros: {
-        fiber: "low",
-        protein: "high",
-        carbohydrates: "low",
-        "good fats": "very high",
-      },
-    },
-    {
       name: "Tofu",
       category: "veg",
       macros: {
@@ -291,26 +261,6 @@ const list = {
       },
     },
     {
-      name: "Tuna",
-      category: "non-veg",
-      macros: {
-        fiber: "low",
-        protein: "very high",
-        carbohydrates: "low",
-        "good fats": "medium",
-      },
-    },
-    {
-      name: "Turkey Breast",
-      category: "non-veg",
-      macros: {
-        fiber: "low",
-        protein: "very high",
-        carbohydrates: "low",
-        "good fats": "low",
-      },
-    },
-    {
       name: "Cottage Cheese",
       category: "veg/non-veg",
       macros: {
@@ -391,6 +341,68 @@ const list = {
       },
     },
     {
+      name: "Greek Yogurt (Plain)",
+      category: "veg/non-veg",
+      macros: {
+        fiber: "medium",
+        protein: "high",
+        carbohydrates: "medium",
+        "good fats": "medium",
+      },
+    },
+  ],
+  "non-veg": [
+    {
+      name: "Eggs",
+      category: "non-veg",
+      macros: {
+        fiber: "low",
+        protein: "high",
+        carbohydrates: "low",
+        "good fats": "medium",
+      },
+    },
+    {
+      name: "Chicken Breast",
+      category: "non-veg",
+      macros: {
+        fiber: "low",
+        protein: "very high",
+        carbohydrates: "low",
+        "good fats": "low",
+      },
+    },
+    {
+      name: "Salmon",
+      category: "non-veg",
+      macros: {
+        fiber: "low",
+        protein: "high",
+        carbohydrates: "low",
+        "good fats": "very high",
+      },
+    },
+    {
+      name: "Tuna",
+      category: "non-veg",
+      macros: {
+        fiber: "low",
+        protein: "very high",
+        carbohydrates: "low",
+        "good fats": "medium",
+      },
+    },
+    {
+      name: "Turkey Breast",
+      category: "non-veg",
+      macros: {
+        fiber: "low",
+        protein: "very high",
+        carbohydrates: "low",
+        "good fats": "low",
+      },
+    },
+    {
       name: "Salmon (Canned)",
       category: "non-veg",
       macros: {
@@ -407,16 +419,6 @@ const list = {
         fiber: "low",
         protein: "very high",
         carbohydrates: "low",
-        "good fats": "medium",
-      },
-    },
-    {
-      name: "Greek Yogurt (Plain)",
-      category: "veg/non-veg",
-      macros: {
-        fiber: "medium",
-        protein: "high",
-        carbohydrates: "medium",
         "good fats": "medium",
       },
     },
