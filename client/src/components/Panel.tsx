@@ -27,7 +27,7 @@ function Panel({ setRecipes, setLoading }: any) {
   return (
     <>
       <div className="flex items-center justify-between">
-        <img src="/logo.png" className="w-[90px] md:w-full p-3" alt="logo" />
+        <img src="logo.png" className="w-[90px] md:w-full p-3" alt="logo" />
         <div className="px-5 md:hidden">
           <GiHamburgerMenu color="white" size={"30px"} />
         </div>

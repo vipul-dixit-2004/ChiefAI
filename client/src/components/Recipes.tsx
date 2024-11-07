@@ -1,4 +1,3 @@
-import React from "react";
 import Card from "./Card";
 
 function Recipes({ r, loading }: any) {
@@ -6,7 +5,7 @@ function Recipes({ r, loading }: any) {
     <>
       {loading ? (
         <div className="flex justify-center items-center h-full">
-          <img src="/loading.gif" alt="No recipes available" />
+          <img src="loading.gif" alt="No recipes available" />
         </div>
       ) : r && r.length > 0 ? (
         <div className="flex flex-col justify-start overflow-y-scroll max-h-[500px] p-4">
@@ -16,7 +15,7 @@ function Recipes({ r, loading }: any) {
         </div>
       ) : (
         <div className="flex justify-center items-center h-full">
-          <img src="/noRecipes.png" alt="No recipes available" />
+          <img src="noRecipes.png" alt="No recipes available" />
         </div>
       )}
     </>
