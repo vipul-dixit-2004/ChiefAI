@@ -1,14 +1,15 @@
-const cook = require("../recipe.js");
+const chief = require("../chief.js");
 
 const recipes = async (req, res) => {
-  console.log("req");
-  const response = await cook.cook(
-    "electric kettle",
-    "peanuts,vegetables,sprount,moongdal",
-    "none",
-    "want to gain weight, no blender"
-  );
-  res.send(response);
+  const { devices, ingredients, allergies, issues } = req.body;
+  const response = await chief.cook(devices, ingredients, allergies, issues);
+
+  try {
+    res.status(200).json(await JSON.parse(response));
+  } catch (e) {
+    console.log(e);
+    res.status(400).json({ error: e });
+  }
 };
 
 module.exports = {
