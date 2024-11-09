@@ -1,12 +1,14 @@
 import axios, { all } from "axios";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
-function Panel({ setRecipes, setLoading }: any) {
+function Panel({ setRecipes, setLoading, showNavbar, setShowNavbar }: any) {
   const [devices, setDevices] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [allergies, setAllergies] = useState("");
   const [issues, setIssues] = useState("");
+  const [navIcon, setNavIcon] = useState(true);
 
   const findRecipes = async (
     devices: string,
@@ -29,10 +31,35 @@ function Panel({ setRecipes, setLoading }: any) {
       <div className="flex items-center justify-between">
         <img src="logo.png" className="w-[90px] md:w-full p-3" alt="logo" />
         <div className="px-5 md:hidden">
-          <GiHamburgerMenu color="white" size={"30px"} />
+          {navIcon ? (
+            <GiHamburgerMenu
+              color="white"
+              size={"30px"}
+              onClick={() => {
+                const d: boolean = showNavbar;
+                setShowNavbar(!d);
+                setNavIcon(d);
+              }}
+            />
+          ) : (
+            <IoIosCloseCircleOutline
+              color="white"
+              size={"30px"}
+              onClick={() => {
+                const d: boolean = showNavbar;
+                setShowNavbar(!d);
+                setNavIcon(d);
+              }}
+            />
+          )}
         </div>
       </div>
-      <div className="md:flex flex-col p-3 g-2 justify-evenly hidden">
+      <div
+        className={`md:flex flex-col p-3 g-2 justify-evenly
+           
+          
+          ${showNavbar ? "" : "hidden"}`}
+      >
         <label htmlFor="">Devices:</label>
         <input
           type="text"
@@ -67,6 +94,7 @@ function Panel({ setRecipes, setLoading }: any) {
           className="mb-2 rounded-sm p-2"
           placeholder="Allergies"
         />
+
         <label htmlFor="issues">Other Issues:</label>
 
         <input
