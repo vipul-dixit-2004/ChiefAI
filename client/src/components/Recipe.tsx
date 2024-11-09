@@ -2,7 +2,7 @@ import React from "react";
 
 function Recipe({ r, setShowRecipe }) {
   return (
-    <div>
+    <div className="px-5 pb-6">
       <button
         className="mb-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
         onClick={() => setShowRecipe(false)}

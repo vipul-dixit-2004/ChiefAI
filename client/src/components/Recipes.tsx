@@ -8,7 +8,7 @@ function Recipes({ r, loading, setRecipeIdx, setShowRecipe }): any {
           <img src="loading.gif" alt="Loading..." />
         </div>
       ) : r && r.length > 0 ? (
-        <div className="flex flex-col justify-start overflow-y-scroll max-h-[500px] p-4">
+        <div className="flex flex-col justify-start overflow-y-scroll max-h-full p-4">
           {r.map((recipe, idx) => (
             <Card
               key={idx}
