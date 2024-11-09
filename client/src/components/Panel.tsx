@@ -71,7 +71,7 @@ function Panel({ setRecipes, setLoading, showNavbar, setShowNavbar }: any) {
             }}
             value={devices}
             className="mb-2 rounded-sm p-2"
-            placeholder="Devices you have"
+            placeholder="Eg. Electric Kettle, Induction"
           />
         </div>
         <div className="flex md:flex-col flex-row justify-evenly md:items-start items-center">
@@ -84,7 +84,7 @@ function Panel({ setRecipes, setLoading, showNavbar, setShowNavbar }: any) {
             }}
             value={ingredients}
             className="mb-2 rounded-sm p-2"
-            placeholder="Ingredients"
+            placeholder="Eg. Panner,Peanuts,Besan"
           />
         </div>
 
@@ -99,7 +99,7 @@ function Panel({ setRecipes, setLoading, showNavbar, setShowNavbar }: any) {
             }}
             value={allergies}
             className="mb-2 rounded-sm p-2"
-            placeholder="Allergies"
+            placeholder="Eg. Lactose Intolerant"
           />
         </div>
         <div className="flex md:flex-col flex-row justify-evenly md:items-start items-center">
