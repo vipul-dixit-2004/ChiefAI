@@ -1,7 +1,9 @@
 import axios, { all } from "axios";
+import api from "../utils/api";
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosCloseCircleOutline } from "react-icons/io";
+
 
 function Panel({ setRecipes, setLoading, showNavbar, setShowNavbar }: any) {
   const [devices, setDevices] = useState("");
@@ -17,7 +19,7 @@ function Panel({ setRecipes, setLoading, showNavbar, setShowNavbar }: any) {
     issues: string
   ) => {
     setLoading(true);
-    const response = await axios.post("https://chiefai.onrender.com/api/cook", {
+    const response = await api.post("/api/cook", {
       devices,
       ingredients,
       allergies,
