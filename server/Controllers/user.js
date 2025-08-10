@@ -41,7 +41,7 @@ async function handleUserLogin(req, res) {
             sameSite: "strict",
         });
 
-        return res.status(200).json({ message: "Login successful", name: user.name, email: user.email, _id: user.id });
+        return res.status(200).json({ message: "Login successful", name: user.name, email: user.email, _id: user.id, isFlowComplete: user.isFlowComplete });
     } catch (e) {
         console.log(e);
         return res.status(500).json({ message: "Internal server error" });

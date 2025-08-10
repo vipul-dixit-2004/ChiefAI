@@ -8,7 +8,11 @@ export default function Auth({ children }) {
 
     useEffect(() => {
         api.get("/user/me")
-            .then(() => {
+            .then((response) => {
+                if (!response.data.user.isFlowComplete) {
+                    alert(`Welcome ${response.data.user.name.split(" ")[0]}... Please complete your profile`)
+                    navigate("/profile");
+                }
                 setLoading(false);
             })
             .catch(() => navigate("/login"));

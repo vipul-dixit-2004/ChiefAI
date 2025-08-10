@@ -9,7 +9,7 @@ export default function Profile() {
         email: "",
         password: "",
         gender: "",
-        dietary_preference: "vegetarian",
+        dietary_preference: "none",
         allergies: [] as string[],
         intolerances: [] as string[],
         profilePic: ""
@@ -25,7 +25,7 @@ export default function Profile() {
             .get("/user/me")
             .then((res) => {
                 setUser(res.data.user);
-                console.log(user)
+                console.log(res.data.user)
                 setForm({
                     name: res.data.user.name,
                     email: res.data.user.email,
@@ -156,6 +156,7 @@ export default function Profile() {
                         <select
                             className="border p-2 rounded-lg"
                             value={form.gender}
+                            id={"gender"}
                             onChange={(e) => setForm({ ...form, gender: e.target.value })}
                         >
                             <option value="">Select Gender</option>
@@ -163,19 +164,25 @@ export default function Profile() {
                             <option value="female">Female</option>
                             <option value="other">Other</option>
                         </select>
+                        {form.gender == '' ?
+                            <label htmlFor="gender" className="text-red-600">Select a valid one</label> : null}
 
                         {/* Dietary Preference */}
                         <select
                             className="border p-2 rounded-lg"
                             value={form.dietary_preference}
+                            id={"dietary_preference"}
                             onChange={(e) =>
                                 setForm({ ...form, dietary_preference: e.target.value })
                             }
                         >
+                            <option value="none">Select One</option>
                             <option value="vegetarian">Vegetarian</option>
                             <option value="non-vegetarian">Non-Vegetarian</option>
                             <option value="eggetarian">Eggetarian</option>
                         </select>
+                        {form.dietary_preference == 'none' ?
+                            <label htmlFor="dietary_preference" className="text-red-600">Select a valid one</label> : null}
 
                         {/* Allergies */}
                         <div>

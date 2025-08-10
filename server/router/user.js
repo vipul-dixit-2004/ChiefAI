@@ -23,6 +23,7 @@ router.get("/me", authMiddleware, async (req, res) => {
                 name: user.name,
                 email: user.email,
                 gender: user.gender,
+                isFlowComplete: user.isFlowComplete,
                 dietary_preference: user.dietary_preference,
                 allergies: user.allergies,
                 intolerances: user.intolerances,
@@ -39,18 +40,22 @@ router.get("/me", authMiddleware, async (req, res) => {
 router.put("/update", authMiddleware, async (req, res) => {
     try {
         const { name, email, password, gender, dietary_preference, allergies, intolerances } = req.body;
-        const updateData = { name, email, gender, dietary_preference };
+        const updateData = { name, email, gender, dietary_preference, isFlowComplete: false };
 
         if (password && password.trim() !== "") {
             const { hashPassword } = require("../utils/hash");
             updateData.password = await hashPassword(password);
         }
 
-
+        if (gender.length && dietary_preference != 'none') {
+            updateData.isFlowComplete = true;
+        } else {
+            updateData.isFlowComplete = false;
+        }
         if (Array.isArray(allergies)) updateData.allergies = allergies;
         if (Array.isArray(intolerances)) updateData.intolerances = intolerances;
-
         const updatedUser = await User.findByIdAndUpdate(req.user.id, updateData, { new: true });
+        console.log(updatedUser)
 
         if (!updatedUser) {
             return res.status(404).json({ message: "User not found" });
