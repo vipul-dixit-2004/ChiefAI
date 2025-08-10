@@ -37,8 +37,8 @@ async function handleUserLogin(req, res) {
 
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false, // change for production
-            sameSite: "strict",
+            secure: true, // change for production
+            sameSite: "none",
         });
 
         return res.status(200).json({ message: "Login successful", name: user.name, email: user.email, _id: user.id, isFlowComplete: user.isFlowComplete });
