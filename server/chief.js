@@ -3,8 +3,53 @@ const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 // Note: It's recommended to use the latest models like gemini-1.5-flash
 const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-async function cook(devices, ingredients, allergies, issues) {
-  const prompt = `create few dishes which are high in protein and have low carbohydrates. I am a college student who has only ${devices}. Ingredients I have include ${ingredients} and all spices. Keep in mind I am allergic to ${allergies} and also I have these issues: ${issues}. The response should be in pure JSON format: [{"name": "...", "description": "...", "ingredients": [...], "instructions": [...], "tip": "..."}]. No \`\`\`json\`\`\` or any markdown formatting — just pure JSON array inside square brackets.`;
+async function cook(
+  devices,
+  ingredients,
+  allAllergies,
+  issues,
+  gender,
+  intolerances,
+  dietary_preference
+) {
+  const prompt = `
+You are a culinary AI assistant. Generate a list of **creative, healthy, and realistic recipes**.
+
+Context about the user:
+- Cooking equipment available: ${devices || "basic utensils only"}
+- Ingredients available: ${ingredients} and all common spices
+- Gender: ${gender}
+- Dietary preference: ${dietary_preference}
+- Allergies: ${allAllergies.length ? allAllergies : "None"}
+- Intolerances: ${intolerances.length ? intolerances : "None"}
+- Health issues or dietary restrictions: ${issues.length ? issues : "None"}
+if user is vegetarian then there should be no egg at all.
+Recipe requirements:
+1. Recipes must be **high in protein** and **low in carbohydrates**.
+2. Only use available equipment and ingredients listed.
+3. Avoid all allergens and intolerances mentioned.
+4. Each recipe must include:
+   - "name" (string)
+   - "description" (short string)
+   - "ingredients" (array of Strings) with measurements
+   - "instructions" (array of short, clear steps)
+   - "tip" (string, optional)
+   - "type" (string: "veg", "non-veg", or "contains egg")
+
+Output format:
+- Return ONLY a pure JSON array (no markdown, no extra text, no explanations)
+- Example format:
+[
+  {
+    "name": ".....",
+    "description": "........",
+    "ingredients": [......,.....,.....,.....],
+    "instructions": [......,......,......,.....,...],
+    "tip": "",
+    "type": "veg/non-veg/contains egg"
+  }
+]
+`;
 
   try {
     const result = await model.generateContent(prompt);

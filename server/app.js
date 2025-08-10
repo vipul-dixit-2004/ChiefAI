@@ -1,17 +1,28 @@
 require("dotenv").config();
 const express = require("express");
-const controller = require("./Controllers/control");
-const PORT = process.env.PORT | 3000;
+const PORT = process.env.PORT | 5000;
 const cors = require("cors");
+const { connectToDb } = require("./connectDb");
+const userRoute = require('./router/user');
+const recipeRoute = require('./router/recipe')
+const cookieParser = require("cookie-parser");
 
 const app = express();
-
+connectToDb();
 //configure
 app.use(express.json());
-app.use(cors());
-app.get("/api", (req, res) => {
+app.use(cookieParser());
+app.use(cors({
+  origin: "http://localhost:5173", // your frontend origin
+  credentials: true, // allow cookies to be sent
+}));
+app.use("/user", userRoute);//routes for user
+app.use("/recipe", recipeRoute);
+
+
+
+app.get("/", (req, res) => {
   res.json({ status: true });
 });
-app.post("/api/cook", controller.recipes);
 
-app.listen(PORT, () => console.log("The server is up and running"));
+app.listen(PORT, () => console.log("The server is up and running", PORT));
