@@ -1,16 +1,25 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import Dashboard from "./components/Dashboard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Generate from "./pages/Generate";
+import LoginSignUp from "./pages/LoginSignUp";
+import Auth from "./routes/Auth";
+import Profile from "./pages/Profile";
+import Dashboard from "./pages/Dashboard";
+import LandingPage from "./pages/Landing";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <Dashboard />
-    </>
+    <div className="">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/generate" element={<Auth><Generate /></Auth>} />
+          <Route path="/dashboard" element={<Auth><Dashboard /></Auth>} />
+          <Route path="/login" element={<LoginSignUp />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/" element={<LandingPage />} />
+
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
