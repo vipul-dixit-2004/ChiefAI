@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import getUser from "../utils/getUser";
 import api from "../utils/api";
+import DashRecipeSkeleton from "../components/DashRecipeSkeleton";
 
 interface Recipe {
     _id: string;
@@ -18,6 +19,7 @@ export default function Dashboard() {
     const [savedRecipes, setSavedRecipes] = useState<Recipe[]>([]);
     const [user, setUser] = useState<any>(null);
     const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         async function getRecipes() {
@@ -31,8 +33,10 @@ export default function Dashboard() {
                 } else {
                     setSavedRecipes([]);
                 }
+                setLoading(false);
             } catch (err) {
                 console.error(err);
+                setLoading(false);
             }
         }
         getRecipes();
@@ -79,7 +83,13 @@ export default function Dashboard() {
             {/* Main Content */}
             <div className="max-w-6xl mx-auto p-6">
                 <h2 className="text-2xl font-semibold mb-4">Saved Recipes</h2>
-                {savedRecipes.length > 0 ? (
+                {loading ? (
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {Array.from({ length: 6 }).map((_, i) => (
+                            <DashRecipeSkeleton key={i} />
+                        ))}
+                    </div>
+                ) : savedRecipes.length > 0 ? (
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {savedRecipes.map((recipe) => (
                             <div
@@ -102,9 +112,9 @@ export default function Dashboard() {
                             alt="No recipes available"
                             className="max-w-96 mb-4 opacity-80"
                         />
-
                     </div>
                 )}
+
             </div>
 
             {/* Recipe Modal */}

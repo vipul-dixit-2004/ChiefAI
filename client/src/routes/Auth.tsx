@@ -18,7 +18,7 @@ export default function Auth({ children }) {
             .catch(() => navigate("/login"));
     }, [navigate]);
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <p>Authentication...</p>;
 
     return children;
 }
