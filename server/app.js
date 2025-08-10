@@ -13,8 +13,8 @@ connectToDb();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: "http://localhost:5173", // your frontend origin
-  credentials: true, // allow cookies to be sent
+  origin: ["https://chief-ai-ten.vercel.app"],
+  credentials: true,
 }));
 app.use("/user", userRoute);//routes for user
 app.use("/recipe", recipeRoute);
