@@ -37,7 +37,7 @@ async function handleUserLogin(req, res) {
 
         res.cookie("token", token, {
             httpOnly: true,
-            secure: true, // change for production
+            secure: false, // change for production
             sameSite: "none",
         });
 
@@ -51,7 +51,7 @@ async function handleUserLogin(req, res) {
 function handleUserLogout(req, res) {
     res.clearCookie("token", {
         httpOnly: true,
-        secure: true,
+        secure: false,
         sameSite: "none",
     });
     res.status(200).json({ message: "Logged out successfully" });
