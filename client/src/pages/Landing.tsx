@@ -32,7 +32,7 @@ export default function LandingPage() {
             </nav>
 
             {/* Hero Section */}
-            <header className="flex-1 flex flex-col items-center justify-center text-center px-6 py-16 bg-gradient-to-r from-green-400 to-blue-500 text-white">
+            <header className="flex-1 flex flex-col items-center justify-center text-center px-6 py-16 bg-[url('/background.jpg')] bg-fixed bg-cover text-white">
                 <h2 className="text-4xl md:text-5xl font-bold mb-4">
                     AI-Powered Recipe Generation
                 </h2>
@@ -67,7 +67,7 @@ export default function LandingPage() {
             {/* Graph Section */}
             <section className="py-12 px-6 bg-gray-100">
                 <h2 className="text-center text-2xl font-semibold mb-6">Recipes by Type</h2>
-                <div className="h-64">
+                <div className="h-72">
                     <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={data}>
                             <CartesianGrid strokeDasharray="3 3" />

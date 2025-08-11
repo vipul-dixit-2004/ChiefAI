@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import { logoutUser } from "../utils/getUser";
 
 export default function Profile() {
     const [user, setUser] = useState<any>(null);
@@ -53,8 +54,8 @@ export default function Profile() {
     };
 
     const handleLogout = async () => {
-        await api.post("/user/logout");
-        navigate("/login");
+        await logoutUser();
+        navigate("/");
     };
 
     const addTag = (type: "allergies" | "intolerances") => {
