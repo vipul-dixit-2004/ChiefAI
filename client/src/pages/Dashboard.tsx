@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import getUser from "../utils/getUser";
+import { getUser, logoutUser } from "../utils/getUser";
 import api from "../utils/api";
 import DashRecipeSkeleton from "../components/DashRecipeSkeleton";
 
@@ -43,8 +43,7 @@ export default function Dashboard() {
     }, []);
 
     const handleLogout = async () => {
-        await api.post("/user/logout");
-        localStorage.removeItem("me");
+        await logoutUser();
         navigate("/");
     };
 

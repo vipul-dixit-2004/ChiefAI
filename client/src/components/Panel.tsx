@@ -2,7 +2,7 @@ import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import api from "../utils/api";
-import getUser from "../utils/getUser";
+import { getUser } from "../utils/getUser";
 
 function Panel({ setRecipes, setLoading, showNavbar, setShowNavbar }) {
   const [devices, setDevices] = useState("");

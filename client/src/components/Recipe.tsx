@@ -1,6 +1,6 @@
 import React from "react";
 import api from "../utils/api";
-import getUser from "../utils/getUser";
+import { getUser } from "../utils/getUser";
 
 function Recipe({ r, setShowRecipe }) {
   const handleSaveRecipe = async () => {
