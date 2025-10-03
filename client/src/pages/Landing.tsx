@@ -38,7 +38,7 @@ export default function LandingPage() {
                 </h2>
                 <p className="max-w-xl mb-6 text-lg">
                     Discover, generate, and save recipes tailored to your preferences and dietary needs.
-                    Let ChiefAI cook up something special for you!
+                    Let ChiefAI cook up something special for you! uisdufghws
                 </p>
                 <button
                     onClick={() => navigate("/generate")}
