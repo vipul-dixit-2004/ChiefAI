@@ -13,7 +13,7 @@ connectToDb();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: "https://chief-ai-ten.vercel.app",
+  origin: "https://chief-ai.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
