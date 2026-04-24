@@ -1,2 +1,2 @@
 # ChiefAI 
-<a href="https://vipul-dixit-2004.github.io/ChiefAI/">Demo Link</a>
+<a href="https://chiefai.vipuldixit.tech/">Demo Link</a>
